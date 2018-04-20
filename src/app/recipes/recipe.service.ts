@@ -9,7 +9,7 @@ export class RecipeService {
     private recipes: Recipe[] = [];
     recipeSelected = new EventEmitter<Recipe>();
 
-    constructor(private slService:ShoppingListService) {
+    constructor(private slService: ShoppingListService) {
 
         let r: Recipe = new Recipe('Tasty Schnitzel', 'A super taste Schnitzel - super awesome', 'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG', [new Ingredient('meat', 1), new Ingredient('french fries', 20)]);
         this.recipes.push(r);
@@ -20,6 +20,10 @@ export class RecipeService {
     getRecipes() {
         //prevent accessing the array from outside, instead access the copy of it; slice() return a copy
         return this.recipes.slice();
+    }
+
+    getRecipe(id: number): Recipe {
+        return this.recipes[id];
     }
 
     addIngredientsToShoppingList(ingredients: Ingredient[]) {
