@@ -19,6 +19,11 @@ export class RecipeService {
         this.recipes.push(r);
     }
 
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
     getRecipes() {
         //prevent accessing the array from outside, instead access the copy of it; slice() return a copy
         return this.recipes.slice();
